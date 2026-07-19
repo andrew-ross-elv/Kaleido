@@ -1,0 +1,19 @@
+﻿namespace Kaleido.Abstractions;
+
+/// <summary>
+/// Converts a validated QueryRequest into an optimized
+/// provider-neutral CompiledValueSetQuery.
+///
+/// Compilation resolves field references, operators,
+/// search modes, paging definitions, and named query
+/// metadata into runtime structures suitable for execution.
+///
+/// The resulting compiled query may be reused across
+/// multiple providers.
+///
+/// This interface exists to separate validation from execution.
+/// </summary>
+public interface IValueSetQueryCompiler
+{
+    CompiledValueSetQuery Compile(QueryRequest request, RuntimeValueSetMetadata metadata);
+}

@@ -1,0 +1,24 @@
+﻿namespace Kaleido.Abstractions
+{
+    /// <summary>
+    /// Coordinates the complete value set query pipeline.
+    ///
+    /// Execution Flow:
+    ///     1. Retrieve metadata
+    ///     2. Validate request
+    ///     3. Compile request
+    ///     4. Create source query
+    ///     5. Apply named query
+    ///     6. Apply compiled query
+    ///     7. Materialize results
+    ///     8. Return response
+    ///
+    /// This service acts as the orchestration layer and should
+    /// contain minimal provider-specific logic.
+    /// </summary>
+    public interface IValueSetQueryEngine<TRecord>
+            where TRecord : class
+    {
+        Task<QueryResult<TRecord>> ExecuteAsync(QueryRequest request, CancellationToken cancellationToken = default);
+    }
+}

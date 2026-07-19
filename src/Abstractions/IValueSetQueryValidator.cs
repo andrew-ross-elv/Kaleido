@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Kaleido.Abstractions;
+
+/// <summary>
+/// Validates incoming QueryRequest instances against
+/// value set metadata.
+///
+/// Validation occurs before query compilation and execution.
+///
+/// Responsibilities:
+///   - Field existence validation
+///   - Operator support validation
+///   - Search mode validation
+///   - Sort validation
+///   - Named query parameter validation
+///   - Paging validation
+///
+/// This component must not execute queries or perform
+/// provider-specific logic.
+/// </summary>
+public interface IValueSetQueryValidator
+{
+    void Validate(QueryRequest request, RuntimeValueSetMetadata metadata);
+}
