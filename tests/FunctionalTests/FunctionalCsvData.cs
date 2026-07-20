@@ -1,5 +1,7 @@
 using Kaleido.Extensions;
 using Kaleido.Queryable;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Kaleido.CsvFunctionalTests;
 

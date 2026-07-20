@@ -1,5 +1,6 @@
 using Kaleido;
 using Kaleido.Queryable;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 namespace Queryable.Tests;
 

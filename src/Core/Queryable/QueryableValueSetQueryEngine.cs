@@ -1,5 +1,6 @@
 using Kaleido.Metadata;
 using Kaleido.Validation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Kaleido.Queryable;
 
@@ -13,7 +14,6 @@ public sealed class QueryableValueSetQueryEngine<TRecord> : IValueSetQueryEngine
     private readonly IEnumerable<IQueryableValueSetNamedQuery<TRecord>> _namedQueries;
     private readonly IQueryableCompiledQueryApplier<TRecord> _applier;
     private readonly IQueryableValueSetExecutor<TRecord> _executor;
-    private readonly IServiceProvider? _services;
 
     public QueryableValueSetQueryEngine(
         IValueSetMetadataCatalog metadataCatalog,
@@ -22,8 +22,7 @@ public sealed class QueryableValueSetQueryEngine<TRecord> : IValueSetQueryEngine
         IQueryableValueSetSource<TRecord> source,
         IEnumerable<IQueryableValueSetNamedQuery<TRecord>> namedQueries,
         IQueryableCompiledQueryApplier<TRecord> applier,
-        IQueryableValueSetExecutor<TRecord> executor,
-        IServiceProvider? services = null)
+        IQueryableValueSetExecutor<TRecord> executor)
     {
         _metadataCatalog = metadataCatalog;
         _validator = validator;
@@ -32,7 +31,6 @@ public sealed class QueryableValueSetQueryEngine<TRecord> : IValueSetQueryEngine
         _namedQueries = namedQueries;
         _applier = applier;
         _executor = executor;
-        _services = services;
     }
 
     public async Task<QueryResult<TRecord>> ExecuteAsync(QueryRequest request, CancellationToken cancellationToken = default)
@@ -40,7 +38,7 @@ public sealed class QueryableValueSetQueryEngine<TRecord> : IValueSetQueryEngine
         var metadata = _metadataCatalog.GetMetadata<TRecord>();
         _validator.Validate(request, metadata);
         var compiled = _compiler.Compile(request, metadata);
-        var query = _source.CreateQuery(new ValueSetExecutionContext(metadata, request, _services));
+        var query = _source.CreateQuery(new ValueSetExecutionContext(metadata, request));
         query = ApplyNamedQuery(query, compiled, metadata);
         query = _applier.ApplyFilter(query, compiled.Filter);
         query = _applier.ApplySearch(query, compiled.Search);

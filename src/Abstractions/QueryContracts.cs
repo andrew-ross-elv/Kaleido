@@ -35,7 +35,7 @@ public record QueryBody
 
 public interface IFilterExpression { }
 public record QueryFilterGroup(LogicalOperator Operator, List<IFilterExpression> Expressions) : IFilterExpression;
-public record QueryFilter(string Field, FilterOperator Operator, List<object?>? Values) : IFilterExpression;
+public record QueryFilter(string Field, FilterOperator Operator, List<object?> Values) : IFilterExpression;
 
 
 public interface ISearchExpression { }

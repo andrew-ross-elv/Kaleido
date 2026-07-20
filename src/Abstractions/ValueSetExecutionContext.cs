@@ -5,7 +5,6 @@ namespace Kaleido
     public sealed record ValueSetExecutionContext
     (
         RuntimeValueSetMetadata Metadata,
-        QueryRequest Request,
-        IServiceProvider Services
+        QueryRequest Request
     );
 }
