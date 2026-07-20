@@ -1,4 +1,4 @@
-﻿namespace Kaleido.Abstractions
+﻿namespace Kaleido
 {
     /// <summary>
     /// Coordinates the complete value set query pipeline.

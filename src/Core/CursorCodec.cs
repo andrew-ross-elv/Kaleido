@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Kaleido.Core;
+namespace Kaleido;
 
 public static class CursorCodec
 {

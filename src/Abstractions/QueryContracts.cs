@@ -1,4 +1,6 @@
-namespace Kaleido.Abstractions;
+using Kaleido.Metadata;
+
+namespace Kaleido;
 
 /// <summary>Value-set query request.</summary>
 public record QueryRequest

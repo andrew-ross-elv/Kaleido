@@ -1,4 +1,6 @@
-﻿namespace Kaleido.Abstractions
+﻿using Kaleido.Metadata;
+
+namespace Kaleido
 {
     public interface IValueSetDescriptorFactory
     {

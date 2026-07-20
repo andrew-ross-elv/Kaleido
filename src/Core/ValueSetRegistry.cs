@@ -1,6 +1,7 @@
-using Kaleido.Abstractions;
+using Kaleido.Metadata;
+using Kaleido.Registry;
 
-namespace Kaleido.Core;
+namespace Kaleido;
 
 public sealed class ValueSetRegistry : IValueSetRegistry
 {

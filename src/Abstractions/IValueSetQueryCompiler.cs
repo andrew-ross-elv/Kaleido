@@ -1,4 +1,6 @@
-﻿namespace Kaleido.Abstractions;
+﻿using Kaleido.Metadata;
+
+namespace Kaleido;
 
 /// <summary>
 /// Converts a validated QueryRequest into an optimized

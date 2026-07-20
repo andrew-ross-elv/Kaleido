@@ -1,6 +1,6 @@
-using Kaleido.Abstractions;
+using Kaleido.Registry;
 
-namespace Kaleido.Core;
+namespace Kaleido;
 
 public sealed class ValueSetCatalog : IValueSetCatalog
 {

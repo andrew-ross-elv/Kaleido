@@ -1,5 +1,6 @@
 using System.ComponentModel;
-using Kaleido.Abstractions;
+using Kaleido;
+using Kaleido.Metadata;
 
 public sealed class ValueSetDescriptorFactory
     : IValueSetDescriptorFactory
@@ -51,11 +52,8 @@ public sealed class ValueSetDescriptorFactory
                 .Select(GetDescription)
                 .ToArray(),
 
-            field.IsSortable,
-
-            field.SortDirections
-                .Select(GetDescription)
-                .ToArray());
+            field.IsSortable
+        );
     }
 
     private static string GetDescription<TEnum>(

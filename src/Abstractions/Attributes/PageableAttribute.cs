@@ -1,4 +1,4 @@
-﻿namespace Kaleido.Abstractions.Attributes;
+﻿namespace Kaleido.Attributes;
 
 /// <summary>Declares paging support for a value set.</summary>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]

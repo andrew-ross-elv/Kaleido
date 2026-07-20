@@ -1,6 +1,4 @@
-using Kaleido.Abstractions;
-
-namespace Kaleido.Abstractions.Attributes;
+namespace Kaleido.Attributes;
 
 /// <summary>Declares a property as filterable.</summary>
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]

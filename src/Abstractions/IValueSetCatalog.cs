@@ -1,4 +1,4 @@
-﻿namespace Kaleido.Abstractions
+﻿namespace Kaleido
 {
     /// <summary>Primary consumer-facing facade for metadata discovery and query execution.</summary>
     public interface IValueSetCatalog

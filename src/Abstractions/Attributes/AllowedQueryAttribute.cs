@@ -1,6 +1,4 @@
-﻿using Kaleido.Abstractions;
-
-namespace Kaleido.Abstractions.Attributes;
+﻿namespace Kaleido.Attributes;
 
 /// <summary>Declares a named query that is allowed for a value set.</summary>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]

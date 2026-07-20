@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Kaleido.Abstractions;
+namespace Kaleido;
 /// <summary>Defines the filter operations supported by the framework query model.</summary>
 public enum FilterOperator
 {
@@ -48,9 +48,9 @@ public enum FilterOperator
     IsNotNull,
 
     // Boolean
-    [Description("true")]
+    [Description("isTrue")]
     IsTrue,
-    [Description("false")]
+    [Description("isFalse")]
     IsFalse,
 
     //// Collection

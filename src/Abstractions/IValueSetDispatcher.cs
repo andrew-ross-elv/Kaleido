@@ -1,4 +1,4 @@
-﻿namespace Kaleido.Abstractions
+﻿namespace Kaleido
 {
     public interface IValueSetDispatcher
     {

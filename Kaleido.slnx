@@ -8,12 +8,11 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/">
-    <Project Path="src/Abstractions/Abstractions.csproj" />
-    <Project Path="src/Core/Core.csproj" />
-    <Project Path="src/Queryable/Queryable.csproj" />
+    <Project Path="src/Abstractions/Kaleido.Abstractions.csproj" />
+    <Project Path="src/Core/Kaleido.csproj" />
   </Folder>
   <Folder Name="/test/">
-    <Project Path="tests/Core.Tests/Core.Tests.csproj" Id="55125af7-325c-4d23-9487-f3feac779f10" />
-    <Project Path="tests/Queryable.Tests/Queryable.Tests.csproj" />
+    <Project Path="tests/FunctionalTests/Kaleido.FunctionalTests.csproj" />
+    <Project Path="tests/UnitTests/Kaleido.UnitTests.csproj" />
   </Folder>
 </Solution>

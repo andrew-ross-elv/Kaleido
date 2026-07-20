@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
-using Kaleido.Abstractions;
+using Kaleido.Metadata;
 
-namespace Kaleido.Core;
+namespace Kaleido;
 
 public sealed class ValueSetMetadataCatalog : IValueSetMetadataCatalog
 {

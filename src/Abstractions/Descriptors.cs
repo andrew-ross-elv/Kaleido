@@ -1,4 +1,4 @@
-namespace Kaleido.Abstractions;
+namespace Kaleido;
 
 /// <summary>Consumer-safe metadata for a registered value set.</summary>
 public sealed record ValueSetDescriptor(
@@ -17,8 +17,7 @@ public sealed record FieldDescriptor(
     IReadOnlyList<string> FilterOperators,
     bool IsSearchable,
     IReadOnlyList<string> MatchModes,
-    bool IsSortable,
-    IReadOnlyList<string> SortDirections);
+    bool IsSortable);
 
 /// <summary>OpenAPI/JSON-Schema-style data type shape.</summary>
 public sealed record DataTypeDescriptor(string Type, string? Format = null);

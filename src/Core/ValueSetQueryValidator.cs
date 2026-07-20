@@ -1,6 +1,7 @@
-using Kaleido.Abstractions;
+using Kaleido.Metadata;
+using Kaleido.Validation;
 
-namespace Kaleido.Core;
+namespace Kaleido;
 
 public sealed class ValueSetQueryValidator : IValueSetQueryValidator
 {
@@ -77,7 +78,6 @@ public sealed class ValueSetQueryValidator : IValueSetQueryValidator
         {
             var field = GetField(metadata, sort.Field);
             if (!field.IsSortable) throw new InvalidOperationException($"Field '{sort.Field}' is not sortable.");
-            if (!field.SortDirections.Contains(sort.Direction)) throw new InvalidOperationException($"Sort direction '{sort.Direction}' is not supported for field '{sort.Field}'.");
         }
     }
 

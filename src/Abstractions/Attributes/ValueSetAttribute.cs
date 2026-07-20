@@ -1,4 +1,4 @@
-﻿namespace Kaleido.Abstractions.Attributes;
+﻿namespace Kaleido.Attributes;
 
 /// <summary>Marks a record type as a framework-discoverable value set.</summary>
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
