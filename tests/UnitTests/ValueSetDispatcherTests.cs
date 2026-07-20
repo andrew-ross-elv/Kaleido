@@ -9,23 +9,23 @@ using Kaleido.Registry;
 
 namespace Core.Tests
 {
-    public class ValueSetDispatcherTests
+    public class RecordDispatcherTests
     {
         [Fact]
         public async Task QueryAsync_InvokesEngine_And_ReturnsResponse()
         {
             var services = new ServiceCollection();
-            services.AddSingleton<IValueSetDescriptorFactory, ValueSetDescriptorFactory>();
-            services.AddSingleton<IValueSetRegistry>(new TestRegistry());
-            services.AddScoped<IValueSetQueryEngine<SampleRecord>, SampleEngine>();
+            services.AddSingleton<IRecordDescriptorFactory, RecordDescriptorFactory>();
+            services.AddSingleton<IRecordRegistry>(new TestRegistry());
+            services.AddScoped<IRecordQueryEngine<SampleRecord>, SampleEngine>();
 
             var provider = services.BuildServiceProvider();
             var providerFactory = provider.GetRequiredService<IServiceScopeFactory>();
-            var registry = provider.GetRequiredService<IValueSetRegistry>();
-            var descriptors = provider.GetRequiredService<IValueSetDescriptorFactory>();
-            var dispatcher = new ValueSetDispatcher(providerFactory, registry, descriptors);
+            var registry = provider.GetRequiredService<IRecordRegistry>();
+            var descriptors = provider.GetRequiredService<IRecordDescriptorFactory>();
+            var dispatcher = new RecordDispatcher(providerFactory, registry, descriptors);
 
-            var response = await dispatcher.QueryAsync("sample", new QueryRequest(null, null));
+            var response = await dispatcher.QueryAsync("sample", new KaleidoQueryRequest(null, null));
 
             Assert.NotNull(response);
             Assert.Equal(1, response.TotalCount);
@@ -33,19 +33,26 @@ namespace Core.Tests
             Assert.Equal("hello", ((SampleRecord)response.Items[0]).Text);
         }
 
-        private sealed class TestRegistry : IValueSetRegistry
+        private sealed class TestRegistry : IRecordRegistry
         {
-            private readonly RuntimeValueSetMetadata _meta = new("sample","1","s",Array.Empty<RuntimeFieldMetadata>(),Array.Empty<RuntimeAllowedQueryMetadata>(),null);
-            public IReadOnlyCollection<ValueSetRegistration> Registrations => new[] { new ValueSetRegistration("sample", typeof(SampleRecord), _meta) };
-            public ValueSetRegistration? Find(string valueSetKey) => valueSetKey == "sample" ? new ValueSetRegistration("sample", typeof(SampleRecord), _meta) : null;
+            private readonly RuntimeRecordMetadata _meta = new("sample","1","s",Array.Empty<RuntimeFieldMetadata>(),Array.Empty<RuntimeAllowedQueryMetadata>(),null);
+            public IReadOnlyCollection<RecordRegistration> Registrations => new[] { new RecordRegistration("sample", typeof(SampleRecord), _meta) };
+            public RecordRegistration? Find(string recordKey) => recordKey == "sample" ? new RecordRegistration("sample", typeof(SampleRecord), _meta) : null;
         }
 
-        private class SampleEngine : IValueSetQueryEngine<SampleRecord>
+        private class SampleEngine : IRecordQueryEngine<SampleRecord>
         {
-            public Task<QueryResult<SampleRecord>> ExecuteAsync(QueryRequest request, CancellationToken cancellationToken = default)
+            public Task<QueryResult<SampleRecord>> ExecuteTypedAsync(KaleidoQueryRequest request, CancellationToken cancellationToken = default)
             {
                 var items = new List<SampleRecord> { new SampleRecord { Text = "hello" } };
-                var result = new QueryResult<SampleRecord>(items, 1, null, new RuntimeValueSetMetadata("sample","1","s",Array.Empty<RuntimeFieldMetadata>(),Array.Empty<RuntimeAllowedQueryMetadata>(),null));
+                var result = new QueryResult<SampleRecord>(items, 1, new RuntimeRecordMetadata("sample", "1", "s", Array.Empty<RuntimeFieldMetadata>(), Array.Empty<RuntimeAllowedQueryMetadata>(), null));
+                return Task.FromResult(result);
+            }
+
+            Task<IRecordQueryResult> IRecordQueryEngine.ExecuteAsync(KaleidoQueryRequest request, CancellationToken cancellationToken)
+            {
+                var items = new List<SampleRecord> { new SampleRecord { Text = "hello" } };
+                IRecordQueryResult result = new QueryResult<SampleRecord>(items, 1, new RuntimeRecordMetadata("sample", "1", "s", Array.Empty<RuntimeFieldMetadata>(), Array.Empty<RuntimeAllowedQueryMetadata>(), null));
                 return Task.FromResult(result);
             }
         }

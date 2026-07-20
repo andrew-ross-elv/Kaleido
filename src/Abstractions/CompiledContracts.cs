@@ -2,7 +2,7 @@ using Kaleido.Metadata;
 
 namespace Kaleido;
 
-public sealed record CompiledValueSetQuery(
+public sealed record CompiledRecordQuery(
     string? NamedQuery,
     IReadOnlyDictionary<string, object?>? Parameters,
     CompiledFilterExpression? Filter,
@@ -19,4 +19,4 @@ public sealed record CompiledSearchGroup(LogicalOperator Operator, IReadOnlyList
 public sealed record CompiledSearchCondition(RuntimeFieldMetadata Field, string SearchText, MatchMode MatchMode) : CompiledSearchExpression;
 
 public sealed record CompiledSort(RuntimeFieldMetadata Field, SortDirection Direction, int Sequence);
-public sealed record CompiledPage(int Size, int Offset, bool CursorSupported);
+public sealed record CompiledPage(int Size, int Offset);

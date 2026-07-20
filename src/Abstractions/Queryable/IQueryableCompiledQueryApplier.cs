@@ -19,7 +19,7 @@
     ///   - Result materialization
     ///
     /// Used By:
-    ///     QueryableValueSetQueryEngine<TRecord>
+    ///     QueryableRecordQueryEngine<TRecord>
     ///
     /// Primary Benefit:
     ///     Allows alternative execution strategies to be introduced

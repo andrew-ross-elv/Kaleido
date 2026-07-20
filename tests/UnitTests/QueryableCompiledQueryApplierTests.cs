@@ -7,7 +7,7 @@ namespace Queryable.Tests;
 public sealed class QueryableCompiledQueryApplierTests
 {
     private readonly QueryableCompiledQueryApplier<ClientRecord> _applier = new();
-    private readonly RuntimeValueSetMetadata _metadata = ValueSetMetadataBuilder.Build<ClientRecord>();
+    private readonly RuntimeRecordMetadata _metadata = RecordMetadataBuilder.Build<ClientRecord>();
 
     [Fact]
     public void ApplyFilter_Should_Apply_Eq()
@@ -52,7 +52,7 @@ public sealed class QueryableCompiledQueryApplierTests
     [Fact]
     public void ApplyPage_Should_Skip_And_Take()
     {
-        var result = _applier.ApplyPage(ClientRecords.All.AsQueryable(), new CompiledPage(2, 1, true)).ToArray();
+        var result = _applier.ApplyPage(ClientRecords.All.AsQueryable(), new CompiledPage(2, 1)).ToArray();
         Assert.Equal(2, result.Length);
         Assert.Equal("Blue Shield", result[0].ClientName);
     }

@@ -2,7 +2,7 @@ using Kaleido.Queryable;
 
 namespace Kaleido.CsvFunctionalTests;
 
-public sealed class ActiveRecordsQuery : IQueryableValueSetNamedQuery<FunctionalRecord>
+public sealed class ActiveRecordsQuery : IQueryableRecordNamedQuery<FunctionalRecord>
 {
     public string Name => "active-records";
 
@@ -12,7 +12,7 @@ public sealed class ActiveRecordsQuery : IQueryableValueSetNamedQuery<Functional
     }
 }
 
-public sealed class RecordsByCategoryQuery : IQueryableValueSetNamedQuery<FunctionalRecord>
+public sealed class RecordsByCategoryQuery : IQueryableRecordNamedQuery<FunctionalRecord>
 {
     public string Name => "records-by-category";
 
@@ -28,7 +28,7 @@ public sealed class RecordsByCategoryQuery : IQueryableValueSetNamedQuery<Functi
     }
 }
 
-public sealed class HighAmountRecordsQuery : IQueryableValueSetNamedQuery<FunctionalRecord>
+public sealed class HighAmountRecordsQuery : IQueryableRecordNamedQuery<FunctionalRecord>
 {
     public string Name => "high-amount-records";
 
@@ -42,7 +42,7 @@ public sealed class HighAmountRecordsQuery : IQueryableValueSetNamedQuery<Functi
     }
 }
 
-public sealed class EffectiveOnQuery : IQueryableValueSetNamedQuery<FunctionalRecord>
+public sealed class EffectiveOnQuery : IQueryableRecordNamedQuery<FunctionalRecord>
 {
     public string Name => "effective-on";
 

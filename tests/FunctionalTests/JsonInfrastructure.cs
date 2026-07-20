@@ -31,7 +31,7 @@ public static class FunctionalTestCaseProvider
 
 public static class QueryRequestFactory
 {
-    public static QueryRequest Create(JsonObject json)
+    public static KaleidoQueryRequest Create(JsonObject json)
     {
         var queryName = json["queryName"]?.GetValue<string?>();
         var query = json["query"] is JsonObject q ? CreateBody(q) : null;
@@ -39,7 +39,7 @@ public static class QueryRequestFactory
             ? p.ToDictionary(x => x.Key, x => ConvertJsonValue(x.Value))
             : null;
 
-        return new QueryRequest(queryName, query, parameters);
+        return new KaleidoQueryRequest(queryName, query, parameters);
     }
 
     private static QueryBody CreateBody(JsonObject json)
@@ -47,7 +47,7 @@ public static class QueryRequestFactory
         var search = json["search"] is JsonObject s ? CreateSearch(s) : null;
         var filter = json["filter"] is JsonObject f ? CreateFilter(f) : null;
         var sort = json["sort"] is JsonArray sortArray ? sortArray.OfType<JsonObject>().Select(CreateSort).ToArray() : null;
-        var page = json["page"] is JsonObject p ? new QueryPage(p["size"]?.GetValue<int?>(), p["cursor"]?.GetValue<string?>()) : null;
+        var page = json["page"] is JsonObject p ? new QueryPage(p["size"]?.GetValue<int?>(), p["offset"]?.GetValue<int?>()) : null;
 
         return new QueryBody(search, filter, sort, page);
     }

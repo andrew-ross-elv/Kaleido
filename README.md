@@ -73,7 +73,7 @@ Kaleido uses this metadata to validate, compile, and execute requests.
 
 ## Strongly Typed
 
-Value sets are represented by strongly typed records.
+Records are represented by strongly typed records.
 
 ```csharp
 public sealed record ClientRecord
@@ -185,7 +185,7 @@ Each stage is responsible for a single concern.
 A value set is represented by a strongly typed record and metadata attributes.
 
 ```csharp
-[ValueSet(
+[Record(
     Key = "client",
     Name = "Clients",
     Description = "Available clients")]
@@ -214,19 +214,19 @@ This metadata describes the capabilities available to consumers.
 Sources provide the data backing a value set.
 
 ```csharp
-public sealed class ClientValueSetSource
-    : IQueryableValueSetSource<ClientRecord>
+public sealed class ClientRecordSource
+    : IQueryableRecordSource<ClientRecord>
 {
     private readonly ApplicationDbContext _db;
 
-    public ClientValueSetSource(
+    public ClientRecordSource(
         ApplicationDbContext db)
     {
         _db = db;
     }
 
     public IQueryable<ClientRecord> CreateQuery(
-        ValueSetExecutionContext context)
+        RecordExecutionContext context)
     {
         return _db.Clients;
     }
@@ -245,7 +245,7 @@ Named queries provide reusable business-specific filters.
 
 ```csharp
 public sealed class ActiveClientsQuery
-    : IQueryableValueSetNamedQuery<ClientRecord>
+    : IQueryableRecordNamedQuery<ClientRecord>
 {
     public string Name => "active-clients";
 
@@ -269,7 +269,7 @@ Register the framework and scan an assembly for value sets.
 ```csharp
 services.AddKaleido();
 
-services.AddQueryableValueSetsFromAssembly(
+services.AddQueryableRecordsFromAssembly(
     typeof(ClientRecord).Assembly);
 ```
 
@@ -284,10 +284,10 @@ Retrieve the catalog:
 ```csharp
 public sealed class ClientController
 {
-    private readonly IValueSetCatalog _catalog;
+    private readonly IRecordCatalog _catalog;
 
     public ClientController(
-        IValueSetCatalog catalog)
+        IRecordCatalog catalog)
     {
         _catalog = catalog;
     }

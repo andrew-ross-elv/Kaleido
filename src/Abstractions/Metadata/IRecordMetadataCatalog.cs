@@ -8,8 +8,8 @@ namespace Kaleido.Metadata;
 /// Central metadata cache for all registered value set record types.
 ///
 /// This service is responsible for converting record definitions
-/// (ValueSetAttribute, FilterableAttribute, SearchableAttribute, etc.)
-/// into RuntimeValueSetMetadata instances.
+/// (RecordAttribute, FilterableAttribute, SearchableAttribute, etc.)
+/// into RuntimeRecordMetadata instances.
 ///
 /// Metadata is generated once and reused for the lifetime of the
 /// application to avoid repeated reflection operations.
@@ -19,20 +19,20 @@ namespace Kaleido.Metadata;
 ///     Metadata Provider
 ///
 /// Used By:
-///     - ValueSetQueryEngine<T>
-///     - ValueSetDescriptorFactory
+///     - RecordQueryEngine<T>
+///     - RecordDescriptorFactory
 ///     - Registration/Discovery components
 ///
 /// Implementations:
-///     - ValueSetMetadataCatalog
+///     - RecordMetadataCatalog
 ///
 /// Replaceability:
 ///     Consumers should depend on this abstraction only.
 ///     Alternate implementations may load metadata from
 ///     external registries or precompiled sources.
 /// </remarks>
-public interface IValueSetMetadataCatalog
+public interface IRecordMetadataCatalog
 {
-    RuntimeValueSetMetadata GetMetadata<TRecord>() where TRecord : class;
-    RuntimeValueSetMetadata GetMetadata(Type recordType);
+    RuntimeRecordMetadata GetMetadata<TRecord>() where TRecord : class;
+    RuntimeRecordMetadata GetMetadata(Type recordType);
 }

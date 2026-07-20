@@ -16,9 +16,13 @@
     /// This service acts as the orchestration layer and should
     /// contain minimal provider-specific logic.
     /// </summary>
-    public interface IValueSetQueryEngine<TRecord>
+    public interface IRecordQueryEngine<TRecord> : IRecordQueryEngine
             where TRecord : class
     {
-        Task<QueryResult<TRecord>> ExecuteAsync(QueryRequest request, CancellationToken cancellationToken = default);
+        Task<QueryResult<TRecord>> ExecuteTypedAsync(KaleidoQueryRequest request, CancellationToken cancellationToken = default);
+    }
+    public interface IRecordQueryEngine
+    {
+        Task<IRecordQueryResult> ExecuteAsync(KaleidoQueryRequest request, CancellationToken cancellationToken = default);
     }
 }

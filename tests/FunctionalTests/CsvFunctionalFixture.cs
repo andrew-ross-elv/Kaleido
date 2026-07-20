@@ -15,16 +15,16 @@ public sealed class CsvFunctionalFixture : IDisposable
 
         // Adjust if your actual registration extensions differ.
         services.AddKaleido();
-        services.AddQueryableValueSetsFromAssembly(typeof(FunctionalRecord).Assembly);
+        services.AddQueryableRecordsFromAssembly(typeof(FunctionalRecord).Assembly);
 
         _provider = services.BuildServiceProvider(validateScopes: true);
     }
 
-    public async Task<ValueSetQueryResponse> QueryAsync(string valueSetKey, QueryRequest request)
+    public async Task<KaleidoQueryResponse> QueryAsync(string recordKey, KaleidoQueryRequest request)
     {
         using var scope = _provider.CreateScope();
-        var catalog = scope.ServiceProvider.GetRequiredService<IValueSetCatalog>();
-        return await catalog.QueryAsync(valueSetKey, request);
+        var catalog = scope.ServiceProvider.GetRequiredService<IKaleidoCatalog>();
+        return await catalog.QueryAsync(recordKey, request);
     }
 
     public void Dispose()

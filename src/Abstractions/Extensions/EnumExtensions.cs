@@ -30,39 +30,10 @@ public static class EnumExtensions
         out TEnum result)
         where TEnum : struct, Enum
     {
-        result = default;
+        var b = TryParseFromDescription(typeof(TEnum), value, out var objResult);
+        result = objResult is TEnum enumResult ? enumResult : default;
 
-        if (string.IsNullOrWhiteSpace(value))
-        {
-            return false;
-        }
-
-        var text = value.Trim();
-
-        foreach (TEnum item in Enum.GetValues(typeof(TEnum)))
-        {
-            var enumValue = item as Enum;
-
-            if (enumValue == null)
-            {
-                continue;
-            }
-
-            if (string.Equals(
-                    enumValue.GetDescription(),
-                    text,
-                    StringComparison.OrdinalIgnoreCase) ||
-                string.Equals(
-                    enumValue.ToString(),
-                    text,
-                    StringComparison.OrdinalIgnoreCase))
-            {
-                result = item;
-                return true;
-            }
-        }
-
-        return false;
+        return b;
     }
 
     public static bool TryParseFromDescription(

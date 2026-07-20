@@ -6,18 +6,18 @@ using Xunit;
 
 namespace Core.Tests
 {
-    public class ValueSetMetadataBuilderTests
+    public class RecordMetadataBuilderTests
     {
         [Fact]
         public void Build_WithoutAttribute_Throws()
         {
-            Assert.Throws<InvalidOperationException>(() => ValueSetMetadataBuilder.Build(typeof(NoAttributeRecord)));
+            Assert.Throws<InvalidOperationException>(() => RecordMetadataBuilder.Build(typeof(NoAttributeRecord)));
         }
 
         [Fact]
         public void Build_WithAttributes_BuildsMetadata()
         {
-            var meta = ValueSetMetadataBuilder.Build(typeof(RecordWithAttributes));
+            var meta = RecordMetadataBuilder.Build(typeof(RecordWithAttributes));
             Assert.Equal("myset", meta.Name);
             Assert.Single(meta.Fields);
             var f = meta.Fields[0];
@@ -28,8 +28,8 @@ namespace Core.Tests
 
         private class NoAttributeRecord { public string? X { get; set; } }
 
-        [ValueSet("myset", "1", "s")]
-        [Pageable(10, 100, true)]
+        [KaleidoRecord("myset", "1", "s")]
+        [Pageable(10, 100)]
         private class RecordWithAttributes
         {
             [Filterable(FilterOperator.Eq)]

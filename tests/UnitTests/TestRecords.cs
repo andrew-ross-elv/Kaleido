@@ -2,9 +2,9 @@ using Kaleido;
 using Kaleido.Attributes;
 namespace Queryable.Tests;
 
-[ValueSet("Client", "1", "Demo")]
+[KaleidoRecord("Client", "1", "Demo")]
 [AllowedQuery("active", "Active")]
-[Pageable(2, 10, true)]
+[Pageable(2, 10)]
 public sealed class ClientRecord
 {
     [Filterable(FilterOperator.Eq, FilterOperator.Contains, FilterOperator.StartsWith, FilterOperator.EndsWith, FilterOperator.In)]

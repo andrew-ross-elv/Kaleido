@@ -4,18 +4,18 @@ using Xunit;
 
 namespace Core.Tests
 {
-    public class ValueSetMetadataCatalogTests
+    public class RecordMetadataCatalogTests
     {
         [Fact]
         public void GetMetadata_Caches_ByType()
         {
-            var catalog = new ValueSetMetadataCatalog();
+            var catalog = new RecordMetadataCatalog();
             var a = catalog.GetMetadata(typeof(TestRecord));
             var b = catalog.GetMetadata(typeof(TestRecord));
             Assert.Same(a, b);
         }
 
-        [ValueSet("test", "1", "s")]
+        [KaleidoRecord("test", "1", "s")]
         private class TestRecord
         {
             public string? Name { get; set; }

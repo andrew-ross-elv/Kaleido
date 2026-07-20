@@ -1,7 +1,7 @@
 namespace Kaleido;
 
 /// <summary>Consumer-safe metadata for a registered value set.</summary>
-public sealed record ValueSetDescriptor(
+public sealed record RecordDescriptor(
     string Name,
     string Version,
     string Source,
@@ -26,4 +26,4 @@ public sealed record DataTypeDescriptor(string Type, string? Format = null);
 public sealed record AllowedQueryDescriptor(string Name, string Description, IReadOnlyList<string> Parameters);
 
 /// <summary>Consumer-safe paging metadata.</summary>
-public sealed record PageableDescriptor(int DefaultSize, int MaxSize, bool CursorSupported);
+public sealed record PageableDescriptor(int DefaultSize, int MaxSize);

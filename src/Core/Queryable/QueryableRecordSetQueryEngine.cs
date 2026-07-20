@@ -4,25 +4,25 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Kaleido.Queryable;
 
-public sealed class QueryableValueSetQueryEngine<TRecord> : IValueSetQueryEngine<TRecord>
+public sealed class QueryableRecordSetQueryEngine<TRecord> : IRecordQueryEngine<TRecord>
     where TRecord : class
 {
-    private readonly IValueSetMetadataCatalog _metadataCatalog;
-    private readonly IValueSetQueryValidator _validator;
-    private readonly IValueSetQueryCompiler _compiler;
-    private readonly IQueryableValueSetSource<TRecord> _source;
-    private readonly IEnumerable<IQueryableValueSetNamedQuery<TRecord>> _namedQueries;
+    private readonly IRecordMetadataCatalog _metadataCatalog;
+    private readonly IRecordQueryValidator _validator;
+    private readonly IRecordQueryCompiler _compiler;
+    private readonly IQueryableRecordSource<TRecord> _source;
+    private readonly IEnumerable<IQueryableRecordNamedQuery<TRecord>> _namedQueries;
     private readonly IQueryableCompiledQueryApplier<TRecord> _applier;
-    private readonly IQueryableValueSetExecutor<TRecord> _executor;
+    private readonly IQueryableRecordExecutor<TRecord> _executor;
 
-    public QueryableValueSetQueryEngine(
-        IValueSetMetadataCatalog metadataCatalog,
-        IValueSetQueryValidator validator,
-        IValueSetQueryCompiler compiler,
-        IQueryableValueSetSource<TRecord> source,
-        IEnumerable<IQueryableValueSetNamedQuery<TRecord>> namedQueries,
+    public QueryableRecordSetQueryEngine(
+        IRecordMetadataCatalog metadataCatalog,
+        IRecordQueryValidator validator,
+        IRecordQueryCompiler compiler,
+        IQueryableRecordSource<TRecord> source,
+        IEnumerable<IQueryableRecordNamedQuery<TRecord>> namedQueries,
         IQueryableCompiledQueryApplier<TRecord> applier,
-        IQueryableValueSetExecutor<TRecord> executor)
+        IQueryableRecordExecutor<TRecord> executor)
     {
         _metadataCatalog = metadataCatalog;
         _validator = validator;
@@ -33,26 +33,29 @@ public sealed class QueryableValueSetQueryEngine<TRecord> : IValueSetQueryEngine
         _executor = executor;
     }
 
-    public async Task<QueryResult<TRecord>> ExecuteAsync(QueryRequest request, CancellationToken cancellationToken = default)
+    public async Task<IRecordQueryResult> ExecuteAsync(KaleidoQueryRequest request, CancellationToken cancellationToken = default)
+    {
+        return await ExecuteTypedAsync(request, cancellationToken);
+    }
+
+    public async Task<QueryResult<TRecord>> ExecuteTypedAsync(KaleidoQueryRequest request, CancellationToken cancellationToken = default)
     {
         var metadata = _metadataCatalog.GetMetadata<TRecord>();
         _validator.Validate(request, metadata);
         var compiled = _compiler.Compile(request, metadata);
-        var query = _source.CreateQuery(new ValueSetExecutionContext(metadata, request));
+        var query = _source.CreateQuery(new RecordExecutionContext(metadata, request));
         query = ApplyNamedQuery(query, compiled, metadata);
         query = _applier.ApplyFilter(query, compiled.Filter);
         query = _applier.ApplySearch(query, compiled.Search);
         query = _applier.ApplySort(query, compiled.Sort);
         var totalCount = await _executor.CountAsync(query, cancellationToken);
-        var nextCursor = compiled.Page.Offset + compiled.Page.Size < totalCount
-            ? CursorCodec.EncodeOffset(compiled.Page.Offset + compiled.Page.Size)
-            : null;
+        var nextCursor = compiled.Page.Offset + compiled.Page.Size < totalCount;
         query = _applier.ApplyPage(query, compiled.Page);
         var items = await _executor.ToListAsync(query, cancellationToken);
-        return new QueryResult<TRecord>(items, totalCount, nextCursor, metadata);
+        return new QueryResult<TRecord>(items, totalCount, metadata);
     }
 
-    private IQueryable<TRecord> ApplyNamedQuery(IQueryable<TRecord> query, CompiledValueSetQuery compiled, RuntimeValueSetMetadata metadata)
+    private IQueryable<TRecord> ApplyNamedQuery(IQueryable<TRecord> query, CompiledRecordQuery compiled, RuntimeRecordMetadata metadata)
     {
         if (string.IsNullOrWhiteSpace(compiled.NamedQuery)) return query;
         var handler = _namedQueries.SingleOrDefault(x => string.Equals(x.Name, compiled.NamedQuery, StringComparison.OrdinalIgnoreCase));

@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddKaleido()
-    .AddQueryableValueSetsFromAssembly(typeof(ClientRecord).Assembly);
+    .AddQueryableRecordsFromAssembly(typeof(ClientRecord).Assembly);
 
 builder.Services.AddDbContext<KaleidoTestDbContext>(options =>
 {

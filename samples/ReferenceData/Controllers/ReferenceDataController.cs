@@ -8,9 +8,9 @@ namespace PriorAuthIntake.ReferenceData.Api.Controllers;
 [Route("v1")]
 public class ReferenceDataController : ControllerBase
 {
-    private readonly IValueSetCatalog _catalog;
+    private readonly IKaleidoCatalog _catalog;
 
-    public ReferenceDataController(IValueSetCatalog catalog
+    public ReferenceDataController(IKaleidoCatalog catalog
         //, IMapper mapper
         )
     {
@@ -20,7 +20,7 @@ public class ReferenceDataController : ControllerBase
     [HttpGet("value-sets")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult<IEnumerable<ValueSetMetadata>> GetValueSets()
+    public ActionResult<IEnumerable<RecordMetadata>> GetValueSets()
     {
         var metas = _catalog.GetAll();
         //var mapped = metas.Select(m => _mapper.Map<ValueSetMetadata>(m));
@@ -32,18 +32,18 @@ public class ReferenceDataController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult<ValueSetMetadata> GetValueSetMetadata(string valueSetKey)
+    public ActionResult<RecordMetadata> GetValueSetMetadata(string valueSetKey)
     {
         var meta = _catalog.Get(valueSetKey);
         if (meta == null) return NotFound();
-        //var mapped = _mapper.Map<ValueSetMetadata>(meta);
+        //var mapped = _mapper.Map<RecordMetadata>(meta);
         return Ok(meta);
     }
 
     [HttpPost("value-sets/{valueSetKey}/query")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public ActionResult<ValueSetQueryResponse> QueryValueSet(string valueSetKey, [FromBody] QueryRequest request)
+    public ActionResult<KaleidoQueryResponse> QueryValueSet(string valueSetKey, [FromBody] KaleidoQueryRequest request)
     {
         try
         {

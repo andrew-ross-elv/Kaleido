@@ -2,7 +2,7 @@
 
 namespace Kaleido.Queryable
 {
-    public interface IQueryableValueSetExecutor<TRecord>
+    public interface IQueryableRecordExecutor<TRecord>
         where TRecord : class
     {
         Task<int> CountAsync(IQueryable<TRecord> query, CancellationToken cancellationToken = default);

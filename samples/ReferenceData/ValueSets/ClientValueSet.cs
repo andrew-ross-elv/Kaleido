@@ -6,47 +6,47 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ReferenceData.ValueSets;
 
-[ValueSet("clients", "1.0.0", "SQLite Test Data")]
+[KaleidoRecord("clients", "1.0.0", "SQLite Test Data")]
 [AllowedQuery("clients-by-group", "Returns clients for a supplied group.", "groupName")]
 [AllowedQuery("clients-searchable", "Returns clients intended for search tests.")]
-[Pageable(50, 500, true)]
+[Pageable(50, 500)]
 public sealed class ClientRecord
 {
     [Key]
     [Filterable(FilterOperator.Eq, FilterOperator.In, FilterOperator.StartsWith)]
     [Searchable(1, MatchMode.Exact, MatchMode.StartsWith, MatchMode.Contains)]
-    [Sortable(SortDirection.Asc, SortDirection.Desc)]
+    [Sortable()]
     public string ClientId { get; init; } = string.Empty;
 
     [Filterable(FilterOperator.Eq, FilterOperator.Contains, FilterOperator.StartsWith)]
     [Searchable(2, MatchMode.Exact, MatchMode.StartsWith, MatchMode.Contains)]
-    [Sortable(SortDirection.Asc, SortDirection.Desc)]
+    [Sortable()]
     public string ClientName { get; init; } = string.Empty;
 
     [Filterable(FilterOperator.Eq, FilterOperator.In)]
     [Searchable(4, MatchMode.Exact, MatchMode.Contains)]
-    [Sortable(SortDirection.Asc, SortDirection.Desc)]
+    [Sortable()]
     public string GroupName { get; init; } = string.Empty;
 
     [Filterable(FilterOperator.Eq, FilterOperator.Contains, FilterOperator.StartsWith)]
     [Searchable(3, MatchMode.Exact, MatchMode.StartsWith, MatchMode.Contains)]
-    [Sortable(SortDirection.Asc, SortDirection.Desc)]
+    [Sortable()]
     public string DisplayName { get; init; } = string.Empty;
 }
 
-public sealed class ClientValueSetSource : IQueryableValueSetSource<ClientRecord>
+public sealed class ClientValueSetSource : IQueryableRecordSource<ClientRecord>
 {
     private readonly KaleidoTestDbContext _db;
 
     public ClientValueSetSource(KaleidoTestDbContext db) => _db = db;
 
-    public IQueryable<ClientRecord> CreateQuery(ValueSetExecutionContext context)
+    public IQueryable<ClientRecord> CreateQuery(RecordExecutionContext context)
     {
         return _db.Clients.AsNoTracking();
     }
 }
 
-public sealed class ClientsByGroupQuery : IQueryableValueSetNamedQuery<ClientRecord>
+public sealed class ClientsByGroupQuery : IQueryableRecordNamedQuery<ClientRecord>
 {
     public string Name => "clients-by-group";
 
@@ -62,7 +62,7 @@ public sealed class ClientsByGroupQuery : IQueryableValueSetNamedQuery<ClientRec
     }
 }
 
-public sealed class ClientsSearchableQuery : IQueryableValueSetNamedQuery<ClientRecord>
+public sealed class ClientsSearchableQuery : IQueryableRecordNamedQuery<ClientRecord>
 {
     public string Name => "clients-searchable";
 

@@ -6,7 +6,7 @@ namespace Kaleido.Registry;
 /// Maintains the list of registered value sets available
 /// to the application.
 ///
-/// While IValueSetMetadataCatalog is responsible for generating
+/// While IRecordMetadataCatalog is responsible for generating
 /// metadata for a specific record type, the registry is responsible
 /// for discovering which value sets exist within the application.
 ///
@@ -17,8 +17,8 @@ namespace Kaleido.Registry;
 /// MetadataCatalog = describes one value set
 /// Registry = knows all value sets
 /// </remarks>
-public interface IValueSetRegistry
+public interface IRecordRegistry
 {
-    IReadOnlyCollection<ValueSetRegistration> Registrations { get; }
-    ValueSetRegistration? Find(string valueSetKey);
+    IReadOnlyCollection<RecordRegistration> Registrations { get; }
+    RecordRegistration? Find(string recordKey);
 }

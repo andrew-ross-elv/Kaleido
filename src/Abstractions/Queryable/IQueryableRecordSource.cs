@@ -21,9 +21,9 @@ namespace Kaleido.Queryable
     /// This interface represents the boundary between
     /// framework infrastructure and application data.
     /// </summary>
-    public interface IQueryableValueSetSource<TRecord>
+    public interface IQueryableRecordSource<TRecord>
             where TRecord : class
     {
-        IQueryable<TRecord> CreateQuery(ValueSetExecutionContext executionContext);
+        IQueryable<TRecord> CreateQuery(RecordExecutionContext executionContext);
     }
 }

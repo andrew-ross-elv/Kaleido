@@ -2,7 +2,7 @@
   {
     "id": "CASE-001",
     "name": "Records by category Alpha",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -50,7 +50,7 @@
   {
     "id": "CASE-002",
     "name": "Records by category Beta",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -98,7 +98,7 @@
   {
     "id": "CASE-003",
     "name": "Records by category Gamma",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -146,7 +146,7 @@
   {
     "id": "CASE-004",
     "name": "Records by category Delta",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -194,7 +194,7 @@
   {
     "id": "CASE-005",
     "name": "Records by category Omega",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -242,7 +242,7 @@
   {
     "id": "CASE-006",
     "name": "Records by category Sigma",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -290,7 +290,7 @@
   {
     "id": "CASE-007",
     "name": "High amount >= 25",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -348,7 +348,7 @@
   {
     "id": "CASE-008",
     "name": "High amount >= 50",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -375,7 +375,7 @@
   {
     "id": "CASE-009",
     "name": "High amount >= 100",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -402,7 +402,7 @@
   {
     "id": "CASE-010",
     "name": "High amount >= 150",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -429,7 +429,7 @@
   {
     "id": "CASE-011",
     "name": "High amount >= 175",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -456,7 +456,7 @@
   {
     "id": "CASE-012",
     "name": "Effective on 2024-01-15",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -509,7 +509,7 @@
   {
     "id": "CASE-013",
     "name": "Effective on 2024-02-15",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -562,7 +562,7 @@
   {
     "id": "CASE-014",
     "name": "Effective on 2024-03-15",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -615,7 +615,7 @@
   {
     "id": "CASE-015",
     "name": "Effective on 2024-04-15",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -668,7 +668,7 @@
   {
     "id": "CASE-016",
     "name": "Active records named query",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "named-query",
     "expectedFailure": false,
     "notes": "",
@@ -744,7 +744,7 @@
   {
     "id": "CASE-017",
     "name": "Id eq",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -782,7 +782,7 @@
   {
     "id": "CASE-018",
     "name": "Id ne",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -844,7 +844,7 @@
   {
     "id": "CASE-019",
     "name": "Id gt",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -906,7 +906,7 @@
   {
     "id": "CASE-020",
     "name": "Id gte",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -968,7 +968,7 @@
   {
     "id": "CASE-021",
     "name": "Id lt",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1024,7 +1024,7 @@
   {
     "id": "CASE-022",
     "name": "Id lte",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1081,7 +1081,7 @@
   {
     "id": "CASE-023",
     "name": "Id between",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1144,7 +1144,7 @@
   {
     "id": "CASE-024",
     "name": "Code startsWith",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1206,7 +1206,7 @@
   {
     "id": "CASE-025",
     "name": "Code endsWith",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1245,7 +1245,7 @@
   {
     "id": "CASE-026",
     "name": "Name contains Alpha",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1307,7 +1307,7 @@
   {
     "id": "CASE-027",
     "name": "Name notContains Alpha",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1369,7 +1369,7 @@
   {
     "id": "CASE-028",
     "name": "Category in",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1432,7 +1432,7 @@
   {
     "id": "CASE-029",
     "name": "Category notIn",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1495,7 +1495,7 @@
   {
     "id": "CASE-030",
     "name": "IsActive eq true",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1557,7 +1557,7 @@
   {
     "id": "CASE-031",
     "name": "IsActive eq false",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1619,7 +1619,7 @@
   {
     "id": "CASE-032",
     "name": "Amount gt",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1655,7 +1655,7 @@
   {
     "id": "CASE-033",
     "name": "Amount between",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1692,7 +1692,7 @@
   {
     "id": "CASE-034",
     "name": "Rate lt",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1754,7 +1754,7 @@
   {
     "id": "CASE-035",
     "name": "Score gte",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1816,7 +1816,7 @@
   {
     "id": "CASE-036",
     "name": "EffectiveDate between",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1879,7 +1879,7 @@
   {
     "id": "CASE-037",
     "name": "CreatedAt between",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -1942,7 +1942,7 @@
   {
     "id": "CASE-038",
     "name": "ExpirationDate null",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2002,7 +2002,7 @@
   {
     "id": "CASE-039",
     "name": "ExpirationDate notNull",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2062,7 +2062,7 @@
   {
     "id": "CASE-040",
     "name": "Status eq Active",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2124,7 +2124,7 @@
   {
     "id": "CASE-041",
     "name": "Status in",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2188,7 +2188,7 @@
   {
     "id": "CASE-042",
     "name": "Priority in",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2252,7 +2252,7 @@
   {
     "id": "CASE-043",
     "name": "Version gt",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2314,7 +2314,7 @@
   {
     "id": "CASE-044",
     "name": "NullableScore null",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2374,7 +2374,7 @@
   {
     "id": "CASE-045",
     "name": "NullableScore notNull",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter",
     "expectedFailure": false,
     "notes": "",
@@ -2434,7 +2434,7 @@
   {
     "id": "CASE-046",
     "name": "Filter group AND",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter-group",
     "expectedFailure": false,
     "notes": "",
@@ -2507,7 +2507,7 @@
   {
     "id": "CASE-047",
     "name": "Filter group OR",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter-group",
     "expectedFailure": false,
     "notes": "",
@@ -2581,7 +2581,7 @@
   {
     "id": "CASE-048",
     "name": "Nested filter group",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "filter-group",
     "expectedFailure": false,
     "notes": "",
@@ -2667,7 +2667,7 @@
   {
     "id": "CASE-049",
     "name": "Search contains Alpha",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -2726,7 +2726,7 @@
   {
     "id": "CASE-050",
     "name": "Search contains Beta",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -2785,7 +2785,7 @@
   {
     "id": "CASE-051",
     "name": "Search contains North",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -2844,7 +2844,7 @@
   {
     "id": "CASE-052",
     "name": "Search contains Commercial",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -2903,7 +2903,7 @@
   {
     "id": "CASE-053",
     "name": "Search contains row 0042",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -2938,7 +2938,7 @@
   {
     "id": "CASE-054",
     "name": "Search contains R0042",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -2973,7 +2973,7 @@
   {
     "id": "CASE-055",
     "name": "Search exact code",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -3009,7 +3009,7 @@
   {
     "id": "CASE-056",
     "name": "Search startsWith name",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search",
     "expectedFailure": false,
     "notes": "",
@@ -3069,7 +3069,7 @@
   {
     "id": "CASE-058",
     "name": "Search group OR",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search-group",
     "expectedFailure": false,
     "notes": "",
@@ -3139,7 +3139,7 @@
   {
     "id": "CASE-059",
     "name": "Search group AND",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "search-group",
     "expectedFailure": false,
     "notes": "",
@@ -3192,7 +3192,7 @@
   {
     "id": "CASE-060",
     "name": "Sort Id asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3253,7 +3253,7 @@
   {
     "id": "CASE-061",
     "name": "Sort Id desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3314,7 +3314,7 @@
   {
     "id": "CASE-062",
     "name": "Sort Code asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3381,7 +3381,7 @@
   {
     "id": "CASE-063",
     "name": "Sort Code desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3448,7 +3448,7 @@
   {
     "id": "CASE-064",
     "name": "Sort Name asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3515,7 +3515,7 @@
   {
     "id": "CASE-065",
     "name": "Sort Name desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3582,7 +3582,7 @@
   {
     "id": "CASE-066",
     "name": "Sort Category asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3649,7 +3649,7 @@
   {
     "id": "CASE-067",
     "name": "Sort Category desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3716,7 +3716,7 @@
   {
     "id": "CASE-068",
     "name": "Sort IsActive asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3783,7 +3783,7 @@
   {
     "id": "CASE-069",
     "name": "Sort IsActive desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3850,7 +3850,7 @@
   {
     "id": "CASE-070",
     "name": "Sort Quantity asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3917,7 +3917,7 @@
   {
     "id": "CASE-071",
     "name": "Sort Quantity desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -3984,7 +3984,7 @@
   {
     "id": "CASE-072",
     "name": "Sort Amount asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4051,7 +4051,7 @@
   {
     "id": "CASE-073",
     "name": "Sort Amount desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4118,7 +4118,7 @@
   {
     "id": "CASE-074",
     "name": "Sort Rate asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4185,7 +4185,7 @@
   {
     "id": "CASE-075",
     "name": "Sort Rate desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4252,7 +4252,7 @@
   {
     "id": "CASE-076",
     "name": "Sort Score asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4319,7 +4319,7 @@
   {
     "id": "CASE-077",
     "name": "Sort Score desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4386,7 +4386,7 @@
   {
     "id": "CASE-078",
     "name": "Sort EffectiveDate asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4453,7 +4453,7 @@
   {
     "id": "CASE-079",
     "name": "Sort EffectiveDate desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4520,7 +4520,7 @@
   {
     "id": "CASE-080",
     "name": "Sort CreatedAt asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4587,7 +4587,7 @@
   {
     "id": "CASE-081",
     "name": "Sort CreatedAt desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4654,7 +4654,7 @@
   {
     "id": "CASE-082",
     "name": "Sort ExpirationDate asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4721,7 +4721,7 @@
   {
     "id": "CASE-083",
     "name": "Sort ExpirationDate desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4788,7 +4788,7 @@
   {
     "id": "CASE-084",
     "name": "Sort Status asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4855,7 +4855,7 @@
   {
     "id": "CASE-085",
     "name": "Sort Status desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4922,7 +4922,7 @@
   {
     "id": "CASE-086",
     "name": "Sort Priority asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -4989,7 +4989,7 @@
   {
     "id": "CASE-087",
     "name": "Sort Priority desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -5056,7 +5056,7 @@
   {
     "id": "CASE-088",
     "name": "Sort Version asc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -5123,7 +5123,7 @@
   {
     "id": "CASE-089",
     "name": "Sort Version desc",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "sort",
     "expectedFailure": false,
     "notes": "",
@@ -5190,7 +5190,7 @@
   {
     "id": "CASE-090",
     "name": "Page size 1",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5222,7 +5222,7 @@
   {
     "id": "CASE-091",
     "name": "Page size 5",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5258,7 +5258,7 @@
   {
     "id": "CASE-092",
     "name": "Page size 10",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5299,7 +5299,7 @@
   {
     "id": "CASE-093",
     "name": "Page size 25",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5355,7 +5355,7 @@
   {
     "id": "CASE-094",
     "name": "Page size 50",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5436,7 +5436,7 @@
   {
     "id": "CASE-095",
     "name": "Page size 100",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5567,7 +5567,7 @@
   {
     "id": "CASE-096",
     "name": "Filtered page category alpha size 10",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5614,7 +5614,7 @@
   {
     "id": "CASE-097",
     "name": "Sorted filtered amount page 15",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "paging",
     "expectedFailure": false,
     "notes": "",
@@ -5656,7 +5656,7 @@
   {
     "id": "CASE-098",
     "name": "Invalid field",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "negative",
     "expectedFailure": true,
     "notes": "",
@@ -5682,7 +5682,7 @@
   {
     "id": "CASE-099",
     "name": "Invalid sort field",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "negative",
     "expectedFailure": true,
     "notes": "",
@@ -5707,7 +5707,7 @@
   {
     "id": "CASE-100",
     "name": "Missing named query parameter",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "negative",
     "expectedFailure": true,
     "notes": "",
@@ -5727,7 +5727,7 @@
   {
     "id": "CASE-101",
     "name": "Unsupported search match mode fuzzy",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "negative",
     "expectedFailure": true,
     "notes": "",
@@ -5756,7 +5756,7 @@
   {
     "id": "CASE-102",
     "name": "Page size too large",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "negative",
     "expectedFailure": true,
     "notes": "",
@@ -5776,7 +5776,7 @@
   {
     "id": "CASE-103",
     "name": "Combo Alpha North",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -5839,7 +5839,7 @@
   {
     "id": "CASE-104",
     "name": "Combo Alpha South",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -5902,7 +5902,7 @@
   {
     "id": "CASE-105",
     "name": "Combo Alpha East",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -5965,7 +5965,7 @@
   {
     "id": "CASE-106",
     "name": "Combo Beta North",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6028,7 +6028,7 @@
   {
     "id": "CASE-107",
     "name": "Combo Beta South",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6091,7 +6091,7 @@
   {
     "id": "CASE-108",
     "name": "Combo Beta East",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6154,7 +6154,7 @@
   {
     "id": "CASE-109",
     "name": "Combo Gamma North",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6217,7 +6217,7 @@
   {
     "id": "CASE-110",
     "name": "Combo Gamma South",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6280,7 +6280,7 @@
   {
     "id": "CASE-111",
     "name": "Combo Gamma East",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6343,7 +6343,7 @@
   {
     "id": "CASE-112",
     "name": "Combo Delta North",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6406,7 +6406,7 @@
   {
     "id": "CASE-113",
     "name": "Combo Delta South",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6469,7 +6469,7 @@
   {
     "id": "CASE-114",
     "name": "Combo Delta East",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6532,7 +6532,7 @@
   {
     "id": "CASE-115",
     "name": "Combo Omega North",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6595,7 +6595,7 @@
   {
     "id": "CASE-116",
     "name": "Combo Omega South",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6658,7 +6658,7 @@
   {
     "id": "CASE-117",
     "name": "Combo Omega East",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6721,7 +6721,7 @@
   {
     "id": "CASE-118",
     "name": "Combo Sigma North",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6784,7 +6784,7 @@
   {
     "id": "CASE-119",
     "name": "Combo Sigma South",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",
@@ -6847,7 +6847,7 @@
   {
     "id": "CASE-120",
     "name": "Combo Sigma East",
-    "valueSetKey": "functional-records",
+    "recordKey": "functional-records",
     "category": "combo",
     "expectedFailure": false,
     "notes": "",

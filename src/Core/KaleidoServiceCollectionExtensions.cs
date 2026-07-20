@@ -15,24 +15,24 @@ public static class KaleidoServiceCollectionExtensions
     /// <returns>The same service collection for chaining.</returns>
     public static IServiceCollection AddKaleido(this IServiceCollection services)
     {
-        services.TryAddSingleton<IValueSetMetadataCatalog, ValueSetMetadataCatalog>();
-        services.TryAddSingleton<IValueSetDescriptorFactory, ValueSetDescriptorFactory>();
-        services.TryAddSingleton<IValueSetQueryValidator, ValueSetQueryValidator>();
-        services.TryAddSingleton<IValueSetQueryCompiler, ValueSetQueryCompiler>();
-        services.TryAddSingleton<IValueSetRegistry, ValueSetRegistry>();
-        services.TryAddScoped<IValueSetDispatcher, ValueSetDispatcher>();
-        services.TryAddScoped<IValueSetCatalog, ValueSetCatalog>();
+        services.TryAddSingleton<IRecordMetadataCatalog, RecordMetadataCatalog>();
+        services.TryAddSingleton<IRecordDescriptorFactory, RecordDescriptorFactory>();
+        services.TryAddSingleton<IRecordQueryValidator, RecordQueryValidator>();
+        services.TryAddSingleton<IRecordQueryCompiler, RecordQueryCompiler>();
+        services.TryAddSingleton<IRecordRegistry, RecordRegistry>();
+        services.TryAddScoped<IRecordDispatcher, RecordDispatcher>();
+        services.TryAddScoped<IKaleidoCatalog, KaleidoCatalog>();
         return services;
     }
 
     /// <summary>Adds services required for queryable value-set execution.</summary>
     /// <param name="services">Service collection to register with.</param>
     /// <returns>The same service collection for chaining.</returns>
-    public static IServiceCollection AddValueSetQueryable(this IServiceCollection services)
+    public static IServiceCollection AddRecordQueryable(this IServiceCollection services)
     {
         services.AddKaleido();
         services.TryAddSingleton(typeof(IQueryableCompiledQueryApplier<>), typeof(QueryableCompiledQueryApplier<>));
-        services.TryAddSingleton(typeof(IQueryableValueSetExecutor<>), typeof(QueryableValueSetExecutor<>));
+        services.TryAddSingleton(typeof(IQueryableRecordExecutor<>), typeof(QueryableRecordExecutor<>));
         return services;
     }
 
@@ -41,20 +41,20 @@ public static class KaleidoServiceCollectionExtensions
     /// <param name="assembly">Assembly that contains value-set sources and named queries.</param>
     /// <param name="lifetime">Lifetime used for discovered sources and named queries.</param>
     /// <returns>The same service collection for chaining.</returns>
-    public static IServiceCollection AddQueryableValueSetsFromAssembly(this IServiceCollection services, Assembly assembly, ServiceLifetime lifetime = ServiceLifetime.Scoped)
+    public static IServiceCollection AddQueryableRecordsFromAssembly(this IServiceCollection services, Assembly assembly, ServiceLifetime lifetime = ServiceLifetime.Scoped)
     {
-        services.AddValueSetQueryable();
+        services.AddRecordQueryable();
         foreach (var type in assembly.DefinedTypes.Where(x => x.IsClass && !x.IsAbstract).Select(x => x.AsType()))
         {
-            foreach (var sourceInterface in type.GetInterfaces().Where(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IQueryableValueSetSource<>)))
+            foreach (var sourceInterface in type.GetInterfaces().Where(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IQueryableRecordSource<>)))
             {
                 var recordType = sourceInterface.GenericTypeArguments[0];
-                var metadata = ValueSetMetadataBuilder.Build(recordType);
-                services.AddSingleton(new ValueSetRegistration(metadata.Name, recordType, metadata));
+                var metadata = RecordMetadataBuilder.Build(recordType);
+                services.AddSingleton(new RecordRegistration(metadata.Name, recordType, metadata));
                 services.Add(new ServiceDescriptor(sourceInterface, type, lifetime));
-                services.TryAdd(new ServiceDescriptor(typeof(IValueSetQueryEngine<>).MakeGenericType(recordType), typeof(QueryableValueSetQueryEngine<>).MakeGenericType(recordType), lifetime));
+                services.TryAdd(new ServiceDescriptor(typeof(IRecordQueryEngine<>).MakeGenericType(recordType), typeof(QueryableRecordSetQueryEngine<>).MakeGenericType(recordType), lifetime));
             }
-            foreach (var namedQueryInterface in type.GetInterfaces().Where(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IQueryableValueSetNamedQuery<>)))
+            foreach (var namedQueryInterface in type.GetInterfaces().Where(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(IQueryableRecordNamedQuery<>)))
             {
                 services.Add(new ServiceDescriptor(namedQueryInterface, type, lifetime));
             }

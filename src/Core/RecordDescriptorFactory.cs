@@ -2,13 +2,13 @@ using System.ComponentModel;
 using Kaleido;
 using Kaleido.Metadata;
 
-public sealed class ValueSetDescriptorFactory
-    : IValueSetDescriptorFactory
+public sealed class RecordDescriptorFactory
+    : IRecordDescriptorFactory
 {
-    public ValueSetDescriptor Create(
-        RuntimeValueSetMetadata metadata)
+    public RecordDescriptor Create(
+        RuntimeRecordMetadata metadata)
     {
-        return new ValueSetDescriptor(
+        return new RecordDescriptor(
             metadata.Name,
             metadata.Version,
             metadata.Source,
@@ -28,8 +28,7 @@ public sealed class ValueSetDescriptorFactory
                 ? null
                 : new PageableDescriptor(
                     metadata.Pageable.DefaultSize,
-                    metadata.Pageable.MaxSize,
-                    metadata.Pageable.CursorSupported));
+                    metadata.Pageable.MaxSize));
     }
 
     private static FieldDescriptor CreateField(

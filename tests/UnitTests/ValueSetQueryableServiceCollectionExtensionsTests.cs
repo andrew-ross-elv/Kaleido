@@ -5,20 +5,20 @@ using Kaleido.Attributes;
 using Kaleido;
 namespace Queryable.Tests;
 
-public sealed class ValueSetQueryableServiceCollectionExtensionsTests
+public sealed class RecordQueryableServiceCollectionExtensionsTests
 {
     [Fact]
-    public void AddQueryableValueSetsFromAssembly_Should_Register_Source_NamedQuery_And_Catalog()
+    public void AddQueryableRecordsFromAssembly_Should_Register_Source_NamedQuery_And_Catalog()
     {
         var services = new ServiceCollection();
-        services.AddQueryableValueSetsFromAssembly(typeof(ScanSource).Assembly);
+        services.AddQueryableRecordsFromAssembly(typeof(ScanSource).Assembly);
         using var provider = services.BuildServiceProvider();
-        Assert.NotNull(provider.GetService<IValueSetCatalog>());
-        Assert.NotNull(provider.GetService<IQueryableValueSetSource<ScanRecord>>());
-        Assert.Single(provider.GetServices<IQueryableValueSetNamedQuery<ScanRecord>>());
+        Assert.NotNull(provider.GetService<IKaleidoCatalog>());
+        Assert.NotNull(provider.GetService<IQueryableRecordSource<ScanRecord>>());
+        Assert.Single(provider.GetServices<IQueryableRecordNamedQuery<ScanRecord>>());
     }
 
-    [ValueSet("Scan", "1", "Demo")]
+    [KaleidoRecord("Scan", "1", "Demo")]
     [AllowedQuery("all", "All")]
     private sealed class ScanRecord
     {
@@ -26,12 +26,12 @@ public sealed class ValueSetQueryableServiceCollectionExtensionsTests
         public string Name { get; init; } = string.Empty;
     }
 
-    private sealed class ScanSource : IQueryableValueSetSource<ScanRecord>
+    private sealed class ScanSource : IQueryableRecordSource<ScanRecord>
     {
-        public IQueryable<ScanRecord> CreateQuery(ValueSetExecutionContext context) => new[] { new ScanRecord { Name = "A" } }.AsQueryable();
+        public IQueryable<ScanRecord> CreateQuery(RecordExecutionContext context) => new[] { new ScanRecord { Name = "A" } }.AsQueryable();
     }
 
-    private sealed class ScanQuery : IQueryableValueSetNamedQuery<ScanRecord>
+    private sealed class ScanQuery : IQueryableRecordNamedQuery<ScanRecord>
     {
         public string Name => "all";
         public IQueryable<ScanRecord> Apply(IQueryable<ScanRecord> query, IReadOnlyDictionary<string, object?>? parameters) => query;

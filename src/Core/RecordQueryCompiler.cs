@@ -2,23 +2,23 @@ using Kaleido.Metadata;
 
 namespace Kaleido;
 
-public sealed class ValueSetQueryCompiler : IValueSetQueryCompiler
+public sealed class RecordQueryCompiler : IRecordQueryCompiler
 {
-    public CompiledValueSetQuery Compile(QueryRequest request, RuntimeValueSetMetadata metadata)
+    public CompiledRecordQuery Compile(KaleidoQueryRequest request, RuntimeRecordMetadata metadata)
     {
         var pageable = metadata.Pageable;
         var size = request.Query?.Page?.Size ?? pageable?.DefaultSize ?? 50;
-        var offset = CursorCodec.DecodeOffset(request.Query?.Page?.Cursor);
-        return new CompiledValueSetQuery(
+        var offset = request.Query?.Page?.Offset ?? 0;
+        return new CompiledRecordQuery(
             request.QueryName,
             request.Parameters,
             CompileFilter(request.Query?.Filter, metadata),
             CompileSearch(request.Query?.Search, metadata),
             CompileSort(request.Query?.Sort, metadata),
-            new CompiledPage(size, offset, pageable?.CursorSupported ?? false));
+            new CompiledPage(size, offset));
     }
 
-    private static CompiledFilterExpression? CompileFilter(IFilterExpression? expression, RuntimeValueSetMetadata metadata)
+    private static CompiledFilterExpression? CompileFilter(IFilterExpression? expression, RuntimeRecordMetadata metadata)
     {
         return expression switch
         {
@@ -29,7 +29,7 @@ public sealed class ValueSetQueryCompiler : IValueSetQueryCompiler
         };
     }
 
-    private static CompiledSearchExpression? CompileSearch(ISearchExpression? expression, RuntimeValueSetMetadata metadata)
+    private static CompiledSearchExpression? CompileSearch(ISearchExpression? expression, RuntimeRecordMetadata metadata)
     {
         return expression switch
         {
@@ -40,7 +40,7 @@ public sealed class ValueSetQueryCompiler : IValueSetQueryCompiler
         };
     }
 
-    private static CompiledSearchExpression CompileSearchCondition(QuerySearch search, RuntimeValueSetMetadata metadata)
+    private static CompiledSearchExpression CompileSearchCondition(QuerySearch search, RuntimeRecordMetadata metadata)
     {
         var conditions = metadata.Fields
             .Where(x => x.IsSearchable)
@@ -52,13 +52,13 @@ public sealed class ValueSetQueryCompiler : IValueSetQueryCompiler
         return conditions.Length == 1 ? conditions[0] : new CompiledSearchGroup(LogicalOperator.Or, conditions);
     }
 
-    private static IReadOnlyList<CompiledSort> CompileSort(IReadOnlyList<QuerySort>? sorts, RuntimeValueSetMetadata metadata)
+    private static IReadOnlyList<CompiledSort> CompileSort(IReadOnlyList<QuerySort>? sorts, RuntimeRecordMetadata metadata)
     {
         if (sorts is null || sorts.Count == 0) return Array.Empty<CompiledSort>();
         return sorts.OrderBy(x => x.Sequence ?? int.MaxValue).Select((x, index) => new CompiledSort(GetField(metadata, x.Field), x.Direction, index)).ToArray();
     }
 
-    private static RuntimeFieldMetadata GetField(RuntimeValueSetMetadata metadata, string fieldName)
+    private static RuntimeFieldMetadata GetField(RuntimeRecordMetadata metadata, string fieldName)
     {
         return metadata.Fields.Single(x => string.Equals(x.Name, fieldName, StringComparison.OrdinalIgnoreCase));
     }

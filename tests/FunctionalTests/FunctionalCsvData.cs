@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Kaleido.CsvFunctionalTests;
 
-public sealed class FunctionalRecordSource : IQueryableValueSetSource<FunctionalRecord>
+public sealed class FunctionalRecordSource : IQueryableRecordSource<FunctionalRecord>
 {
     private readonly FunctionalRecordStore _store;
 
@@ -14,7 +14,7 @@ public sealed class FunctionalRecordSource : IQueryableValueSetSource<Functional
         _store = store;
     }
 
-    public IQueryable<FunctionalRecord> CreateQuery(ValueSetExecutionContext context)
+    public IQueryable<FunctionalRecord> CreateQuery(RecordExecutionContext context)
     {
         return _store.Records.AsQueryable();
     }

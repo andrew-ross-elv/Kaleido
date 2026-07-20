@@ -23,11 +23,11 @@ public sealed class FunctionalCorpusTests
 
         if (testCase.ExpectedFailure)
         {
-            await Assert.ThrowsAnyAsync<Exception>(() => _fixture.QueryAsync(testCase.ValueSetKey, request));
+            await Assert.ThrowsAnyAsync<Exception>(() => _fixture.QueryAsync(testCase.RecordKey, request));
             return;
         }
 
-        var actual = await _fixture.QueryAsync(testCase.ValueSetKey, request);
+        var actual = await _fixture.QueryAsync(testCase.RecordKey, request);
         Assert.NotNull(testCase.Expected);
         Assert.Equal(testCase.Expected.ExpectedTotalCount, actual.TotalCount);
         Assert.Equal(testCase.Expected.ExpectedReturnedCount, actual.Items.Count);

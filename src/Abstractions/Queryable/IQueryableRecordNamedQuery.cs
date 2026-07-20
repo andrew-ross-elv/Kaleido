@@ -1,6 +1,6 @@
 ﻿namespace Kaleido.Queryable
 {
-    public interface IQueryableValueSetNamedQuery<TRecord>
+    public interface IQueryableRecordNamedQuery<TRecord>
         where TRecord : class
     {
         string Name { get; }

@@ -3,9 +3,9 @@ using Kaleido.Validation;
 
 namespace Kaleido;
 
-public sealed class ValueSetQueryValidator : IValueSetQueryValidator
+public sealed class RecordQueryValidator : IRecordQueryValidator
 {
-    public void Validate(QueryRequest request, RuntimeValueSetMetadata metadata)
+    public void Validate(KaleidoQueryRequest request, RuntimeRecordMetadata metadata)
     {
         ArgumentNullException.ThrowIfNull(request);
         ValidateNamedQuery(request, metadata);
@@ -15,7 +15,7 @@ public sealed class ValueSetQueryValidator : IValueSetQueryValidator
         ValidatePage(request.Query?.Page, metadata);
     }
 
-    private static void ValidateNamedQuery(QueryRequest request, RuntimeValueSetMetadata metadata)
+    private static void ValidateNamedQuery(KaleidoQueryRequest request, RuntimeRecordMetadata metadata)
     {
         if (string.IsNullOrWhiteSpace(request.QueryName)) return;
         var allowed = metadata.AllowedQueries.SingleOrDefault(x => string.Equals(x.Name, request.QueryName, StringComparison.OrdinalIgnoreCase));
@@ -27,7 +27,7 @@ public sealed class ValueSetQueryValidator : IValueSetQueryValidator
         }
     }
 
-    private static void ValidateFilter(IFilterExpression? expression, RuntimeValueSetMetadata metadata)
+    private static void ValidateFilter(IFilterExpression? expression, RuntimeRecordMetadata metadata)
     {
         if (expression is null) return;
         switch (expression)
@@ -41,14 +41,14 @@ public sealed class ValueSetQueryValidator : IValueSetQueryValidator
         }
     }
 
-    private static void ValidateFilterCondition(QueryFilter filter, RuntimeValueSetMetadata metadata)
+    private static void ValidateFilterCondition(QueryFilter filter, RuntimeRecordMetadata metadata)
     {
         var field = GetField(metadata, filter.Field);
         if (!field.IsFilterable) throw new InvalidOperationException($"Field '{filter.Field}' is not filterable.");
         if (!field.FilterOperators.Contains(filter.Operator)) throw new InvalidOperationException($"Operator '{filter.Operator}' is not supported for field '{filter.Field}'.");
     }
 
-    private static void ValidateSearch(ISearchExpression? expression, RuntimeValueSetMetadata metadata)
+    private static void ValidateSearch(ISearchExpression? expression, RuntimeRecordMetadata metadata)
     {
         if (expression is null) return;
         switch (expression)
@@ -61,7 +61,7 @@ public sealed class ValueSetQueryValidator : IValueSetQueryValidator
         }
     }
 
-    private static void ValidateSearchCondition(QuerySearch search, RuntimeValueSetMetadata metadata)
+    private static void ValidateSearchCondition(QuerySearch search, RuntimeRecordMetadata metadata)
     {
         if (string.IsNullOrWhiteSpace(search.SearchText)) throw new InvalidOperationException("Search text is required.");
         var fields = metadata.Fields.Where(x => x.IsSearchable);
@@ -71,7 +71,7 @@ public sealed class ValueSetQueryValidator : IValueSetQueryValidator
         if (!list.Any(x => x.MatchModes.Contains(search.MatchMode))) throw new InvalidOperationException($"Match mode '{search.MatchMode}' is not supported for search field '{search.Field ?? "*"}'.");
     }
 
-    private static void ValidateSort(IReadOnlyList<QuerySort>? sorts, RuntimeValueSetMetadata metadata)
+    private static void ValidateSort(IReadOnlyList<QuerySort>? sorts, RuntimeRecordMetadata metadata)
     {
         if (sorts is null) return;
         foreach (var sort in sorts)
@@ -81,15 +81,15 @@ public sealed class ValueSetQueryValidator : IValueSetQueryValidator
         }
     }
 
-    private static void ValidatePage(QueryPage? page, RuntimeValueSetMetadata metadata)
+    private static void ValidatePage(QueryPage? page, RuntimeRecordMetadata metadata)
     {
         if (page is null) return;
-        var pageable = metadata.Pageable ?? throw new InvalidOperationException($"Value set '{metadata.Name}' does not support paging.");
+        var pageable = metadata.Pageable ?? throw new InvalidOperationException($"Record '{metadata.Name}' does not support paging.");
         if (page.Size is <= 0) throw new InvalidOperationException("Page size must be greater than zero.");
         if (page.Size.HasValue && page.Size.Value > pageable.MaxSize) throw new InvalidOperationException($"Page size '{page.Size.Value}' exceeds max page size '{pageable.MaxSize}'.");
     }
 
-    private static RuntimeFieldMetadata GetField(RuntimeValueSetMetadata metadata, string name)
+    private static RuntimeFieldMetadata GetField(RuntimeRecordMetadata metadata, string name)
     {
         return metadata.Fields.SingleOrDefault(x => string.Equals(x.Name, name, StringComparison.OrdinalIgnoreCase))
             ?? throw new InvalidOperationException($"Field '{name}' does not exist on value set '{metadata.Name}'.");

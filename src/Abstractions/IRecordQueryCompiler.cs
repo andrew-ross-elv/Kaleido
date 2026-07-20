@@ -4,7 +4,7 @@ namespace Kaleido;
 
 /// <summary>
 /// Converts a validated QueryRequest into an optimized
-/// provider-neutral CompiledValueSetQuery.
+/// provider-neutral CompiledRecordQuery.
 ///
 /// Compilation resolves field references, operators,
 /// search modes, paging definitions, and named query
@@ -15,7 +15,7 @@ namespace Kaleido;
 ///
 /// This interface exists to separate validation from execution.
 /// </summary>
-public interface IValueSetQueryCompiler
+public interface IRecordQueryCompiler
 {
-    CompiledValueSetQuery Compile(QueryRequest request, RuntimeValueSetMetadata metadata);
+    CompiledRecordQuery Compile(KaleidoQueryRequest request, RuntimeRecordMetadata metadata);
 }

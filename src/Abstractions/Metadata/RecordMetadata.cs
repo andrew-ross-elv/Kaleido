@@ -1,6 +1,6 @@
 namespace Kaleido.Metadata;
 
-public sealed record ValueSetMetadata
+public sealed record RecordMetadata
 (
     string Name,
     string Version,

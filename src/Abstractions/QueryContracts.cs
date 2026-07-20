@@ -3,7 +3,7 @@ using Kaleido.Metadata;
 namespace Kaleido;
 
 /// <summary>Value-set query request.</summary>
-public record QueryRequest
+public record KaleidoQueryRequest
 (
     string? QueryName,
     QueryBody? Query,
@@ -43,27 +43,31 @@ public record QuerySearch(string SearchText, MatchMode MatchMode, string? Field 
 public record QuerySearchGroup(LogicalOperator Operator, List<ISearchExpression> Expressions) : ISearchExpression;
 
 public record QuerySort(string Field, SortDirection Direction, int? Sequence = null);
-public record QueryPage(int? Size, string? Cursor = null);
+public record QueryPage(int? Size, int? Offset);
 
-public interface IValueSetQueryResult
+public interface IRecordQueryResult
 {
     Type RecordType { get; }
     int TotalCount { get; }
-    string? NextCursor { get; }
-    RuntimeValueSetMetadata RuntimeMetadata { get; }
+    RuntimeRecordMetadata RuntimeMetadata { get; }
     IReadOnlyList<object> ItemsAsObjects { get; }
 }
 
-public sealed record QueryResult<TRecord>(IReadOnlyList<TRecord> Items, int TotalCount, string? NextCursor, RuntimeValueSetMetadata RuntimeMetadata)
-    : IValueSetQueryResult
+public sealed record QueryResult<TRecord>(IReadOnlyList<TRecord> Items, int TotalCount, RuntimeRecordMetadata RuntimeMetadata)
+    : IRecordQueryResult
     where TRecord : class
 {
     public Type RecordType => typeof(TRecord);
     public IReadOnlyList<object> ItemsAsObjects => Items.Cast<object>().ToArray();
 }
 
-public sealed record ValueSetQueryResponse(
-    ValueSetDescriptor ValueSet,
+public sealed record KaleidoQueryResponse(
+    RecordDescriptor Record,
     int TotalCount,
-    string? NextCursor,
     IReadOnlyList<object> Items);
+
+public sealed record KaleidoQueryResponse<TRecord>(
+    RecordDescriptor Record,
+    int TotalCount,
+    IReadOnlyList<TRecord> Items)
+    where TRecord : class;

@@ -1,5 +1,7 @@
 <Solution>
-  <Folder Name="/samples/" />
+  <Folder Name="/samples/">
+    <Project Path="samples/ReferenceData/ReferenceData.csproj" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path=".dockerignore" />
     <File Path=".gitattributes" />

@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Core.Tests
 {
-    public class ValueSetDescriptorFactoryTests
+    public class RecordDescriptorFactoryTests
     {
         [Fact]
         public void Create_DataTypes_AreMapped()
@@ -23,8 +23,8 @@ namespace Core.Tests
                 new RuntimeFieldMetadata("obj", typeof(object), false, Array.Empty<FilterOperator>(), false, null, Array.Empty<MatchMode>(), false),
             };
 
-            var meta = new RuntimeValueSetMetadata("n","v","s", fields.ToArray(), Array.Empty<RuntimeAllowedQueryMetadata>(), null);
-            var factory = new ValueSetDescriptorFactory();
+            var meta = new RuntimeRecordMetadata("n","v","s", fields.ToArray(), Array.Empty<RuntimeAllowedQueryMetadata>(), null);
+            var factory = new RecordDescriptorFactory();
             var desc = factory.Create(meta);
 
             Assert.Equal("string", desc.Fields[0].DataType.Type);

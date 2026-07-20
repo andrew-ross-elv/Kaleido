@@ -22,7 +22,7 @@ namespace Kaleido.Validation;
 /// This component must not execute queries or perform
 /// provider-specific logic.
 /// </summary>
-public interface IValueSetQueryValidator
+public interface IRecordQueryValidator
 {
-    void Validate(QueryRequest request, RuntimeValueSetMetadata metadata);
+    void Validate(KaleidoQueryRequest request, RuntimeRecordMetadata metadata);
 }
