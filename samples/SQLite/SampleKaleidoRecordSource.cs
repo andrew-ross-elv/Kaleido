@@ -1,13 +1,23 @@
-﻿using CsvHelper;
+﻿using Kaleido.Queryable;
 using Kaleido.Samples.Shared;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ReferenceData.ValueSets;
-using System.Formats.Asn1;
-using System.Globalization;
-using System.Reflection.Emit;
 
-namespace ReferenceData;
+namespace Kaleido.Samples.SQLite;
+
+public sealed class SampleKaleidoRecordSource : IQueryableRecordSource<SampleKaleidoRecord>
+{
+    private readonly KaleidoTestDbContext _store;
+
+    public SampleKaleidoRecordSource(KaleidoTestDbContext store)
+    {
+        _store = store;
+    }
+
+    public IQueryable<SampleKaleidoRecord> CreateQuery(RecordExecutionContext context)
+    {
+        return _store.Records.AsQueryable();
+    }
+}
 
 public sealed class KaleidoTestDbContext : DbContext
 {
@@ -16,11 +26,11 @@ public sealed class KaleidoTestDbContext : DbContext
     {
     }
 
-    public DbSet<FunctionalRecord> Records => Set<FunctionalRecord>();
+    public DbSet<SampleKaleidoRecord> Records => Set<SampleKaleidoRecord>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<FunctionalRecord>(entity =>
+        modelBuilder.Entity<SampleKaleidoRecord>(entity =>
         {
             entity.ToTable("Clients");
             entity.HasKey(x => x.Id);
@@ -41,7 +51,7 @@ public sealed class KaleidoTestDbContext : DbContext
 
 public static class DbInitializer
 {
-    public static async Task InitializeAsync(KaleidoTestDbContext db, string csvPath, CancellationToken cancellationToken = default)
+    public static async Task InitializeAsync(KaleidoTestDbContext db, CancellationToken cancellationToken = default)
     {
         await db.Database.EnsureCreatedAsync(cancellationToken);
 
@@ -50,21 +60,10 @@ public static class DbInitializer
             return;
         }
 
-        var records = new FunctionalRecordCsvStore();
+        var records = new SampleKaleidoCsvData();
 
         await db.Records.AddRangeAsync(records.Records, cancellationToken);
 
         await db.SaveChangesAsync(cancellationToken);
-    }
-
-    private static async Task<List<FunctionalRecord>> LoadClientsAsync(string path, CancellationToken cancellationToken)
-    {
-        await using var stream = File.OpenRead(path);
-
-        using var reader = new StreamReader(stream);
-
-        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-        return csv.GetRecords<FunctionalRecord>().ToList();
     }
 }
