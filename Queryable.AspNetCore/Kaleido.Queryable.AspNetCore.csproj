@@ -4,9 +4,9 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<RootNamespace>Kaleido</RootNamespace>
-		<AssemblyName>Kaleido</AssemblyName>
-		<PackageId>Kaleido</PackageId>
+		<RootNamespace>Kaleido.Queryable.AspNetCore</RootNamespace>
+		<AssemblyName>Kaleido.Queryable.AspNetCore</AssemblyName>
+		<PackageId>Kaleido.Queryable.AspNetCore</PackageId>
 		<Version>1.0.0</Version>
 		<Authors>Andrew Ross</Authors>
 		<Company>Andrew Ross</Company>
@@ -16,7 +16,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.10" />
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\src\Queryable\Kaleido.Queryable.csproj" />
 	</ItemGroup>
 
 </Project>
