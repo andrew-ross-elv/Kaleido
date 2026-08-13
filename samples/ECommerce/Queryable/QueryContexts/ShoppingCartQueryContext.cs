@@ -1,13 +1,8 @@
-﻿using Kaleido.Process.Shared.Handlers;
-using Kaleido.Queryable;
-using Kaleido.Queryable.Attributes;
+﻿using Kaleido.Queryable.Attributes;
 using Kaleido.Queryable.Query;
-using Kaleido.Samples.ECommerce.Data;
-using Kaleido.Samples.ECommerce.Data.Entities;
-using Kaleido.Samples.ECommerce.Sources;
 using System.ComponentModel.DataAnnotations;
 
-namespace Kaleido.Samples.ECommerce.Records;
+namespace Kaleido.Samples.ECommerce.Data.QueryContexts;
 
 [QueryContext(
     Name = "shopping-carts",
