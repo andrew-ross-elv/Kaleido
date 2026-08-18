@@ -1,14 +1,13 @@
-﻿using Kaleido.Json;
-using Kaleido.Queryable.AspNetCore.FunctionalTests.Infrastructure;
+using Kaleido.Json;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Kaleido.Queryable.AspNetCore.FunctionalTests.Fixtures;
+namespace Kaleido.Process.AspNetCore.FunctionalTests.Fixtures;
 
-public sealed class QueryableAspNetCoreFixture
+public sealed class ProcessAspNetCoreFixture
     : IAsyncLifetime
 {
     private IHost? _host;
@@ -27,12 +26,10 @@ public sealed class QueryableAspNetCoreFixture
                     {
                         services.AddRouting();
 
-                        services.AddSingleton<FunctionalRecordData>();
-
                         services.AddKaleido()
-                            .AddAssembly(typeof(FunctionalRecordContext).Assembly)
-                            .AddQueryable()
-                            .AddQueryableAspNetCore();
+                            .AddAssembly(typeof(ProcessAspNetCoreFixture).Assembly)
+                            .AddParticipant()
+                            .AddParticipantAspNetCore();
 
                         services.ConfigureHttpJsonOptions(options =>
                         {
@@ -43,12 +40,10 @@ public sealed class QueryableAspNetCoreFixture
                     webBuilder.Configure(app =>
                     {
                         app.UseRouting();
-
                         app.UseKaleidoExceptionHandling();
-
                         app.UseEndpoints(endpoints =>
                         {
-                            endpoints.MapQueryable();
+                            endpoints.MapParticipant();
                         });
                     });
                 })
