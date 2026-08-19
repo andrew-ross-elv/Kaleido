@@ -1,17 +1,14 @@
 using Kaleido;
 using Kaleido.Queryable;
 using Kaleido.Queryable.AspNetCore;
-using Kaleido.Process;
-using Kaleido.Process.AspNetCore;
-using Kaleido.Samples.PriorAuth.MemberService.Artifacts.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<MemberDbContext>(
-    options => options.UseSqlite(
-        builder.Configuration.GetConnectionString("MemberService")
-        ?? "Data Source=data/memberservice.db"));
+//builder.Services.AddDbContext<ProviderSearchDbContext>(
+//    options => options.UseSqlite(
+//        builder.Configuration.GetConnectionString("ProviderSearch")
+//        ?? "Data Source=data/providersearch.db"));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -19,16 +16,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddKaleido()
     .AddAssembly(typeof(Program).Assembly)
-    .AddAssembly(typeof(MemberDbContext).Assembly)
-    .AddParticipant()
-        .AddParticipantAspNetCore()
+    //.AddAssembly(typeof(ProviderSearchDbContext).Assembly)
     .AddQueryable()
         .AddQueryableAspNetCore();
 
 var app = builder.Build();
 
 app.MapQueryable();
-app.MapParticipant();
 
 if (app.Environment.IsDevelopment())
 {

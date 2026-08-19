@@ -13,7 +13,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="../../../src/Queryable/Abstractions/Kaleido.Queryable.Abstractions.csproj" />
-		<ProjectReference Include="..\..\..\src\Process\Abstractions\Kaleido.Process.Abstractions.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

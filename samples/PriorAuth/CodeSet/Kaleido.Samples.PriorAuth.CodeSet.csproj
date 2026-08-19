@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>fa3aeb3a-705d-4166-bbe3-fc267dda4f67</UserSecretsId>
+    <UserSecretsId>545800a4-32df-4488-be58-4b1131fe009b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
@@ -16,16 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../ReferenceData.Artifacts/Kaleido.Samples.PriorAuth.ReferenceData.Artifacts.csproj" />
-    <ProjectReference Include="..\..\..\src\Process\AspNetCore\Kaleido.Process.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\..\src\Queryable\AspNetCore\Kaleido.Queryable.AspNetCore.csproj" />
-    <ProjectReference Include="..\MemberService.Artifacts\Kaleido.Samples.PriorAuth.MemberService.Artifacts.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="data\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Queryable\AspNetCore\Kaleido.Queryable.AspNetCore.csproj" />
+    <ProjectReference Include="..\CodeSet.Artifacts\Kaleido.Samples.PriorAuth.CodeSet.Artifacts.csproj" />
   </ItemGroup>
 
 </Project>
