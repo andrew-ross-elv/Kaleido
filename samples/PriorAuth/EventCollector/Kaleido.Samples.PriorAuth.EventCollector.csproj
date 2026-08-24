@@ -4,16 +4,16 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>545800a4-32df-4488-be58-4b1131fe009b</UserSecretsId>
+    <UserSecretsId>f1499271-303a-4903-8ddf-d35992c8ba4e</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.11" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.23.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
     <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.18.0" />
     <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.18.0" />
     <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.18.0" />
@@ -22,15 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="data\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\Common\Kaleido.Samples.PriorAuth.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Common\Kaleido.Samples.PriorAuth.Common.csproj" />
-    <ProjectReference Include="..\..\..\src\Queryable\AspNetCore\Kaleido.Queryable.AspNetCore.csproj" />
-    <ProjectReference Include="..\CodeSet.Artifacts\Kaleido.Samples.PriorAuth.CodeSet.Artifacts.csproj" />
+    <Content Include="data\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
