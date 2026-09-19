@@ -2,17 +2,12 @@
 	<Import Project="../../build/packages.props" />
 
 	<ItemGroup>
-		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.*" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Kaleido\Kaleido.csproj" />
 		<ProjectReference Include="..\Kaleido.Http.Abstractions\Kaleido.Http.Abstractions.csproj" />
-		<ProjectReference Include="..\Kaleido.Http.Client\Kaleido.Http.Client.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="OpenTelemetry" Version="1.18.*" />
 	</ItemGroup>
 
 </Project>
