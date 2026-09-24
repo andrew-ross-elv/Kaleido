@@ -5,6 +5,7 @@
 		<PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" />
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\tools\analyzers\Kaleido.Analyzers\Kaleido.Analyzers.csproj" />
+		<ProjectReference Include="..\..\tools\analyzers\Kaleido.Analyzers.Testing\Kaleido.Analyzers.Testing.csproj" />
+		<ProjectReference Include="..\..\src\Kaleido\Kaleido.csproj" />
 	</ItemGroup>
 </Project>
